@@ -1,6 +1,12 @@
-# TODO: Write documentation for `Up`
-module Up
-  VERSION = "0.1.0"
+require "teeplate"
+require "./up/command"
+require "./up/*"
+require "./up/commands/*"
 
-  # TODO: Put your code here
+module Up
+  def self.run(args : Array(String))
+    Up::Runner.new(args).call
+  end
 end
+
+Up.run(ARGV.dup)
