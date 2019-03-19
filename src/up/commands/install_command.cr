@@ -5,7 +5,7 @@ class Up::InstallCommand < Up::Command
 
   def call
     if already_installed?
-      puts "#{"Did nothing.".colorize.bold.yellow} It looks like Up is already installed."
+      print_already_installed_message
     else
       install
     end
@@ -15,6 +15,10 @@ class Up::InstallCommand < Up::Command
     File.exists?("./up.yml")
   end
 
+  private def print_already_installed_message
+    puts "#{"Did nothing.".colorize.bold.yellow} It looks like Up is already installed."
+  end
+
   private def install
     UpInstallationTemplate.new.render("./")
     ignore_cache_files
@@ -22,8 +26,14 @@ class Up::InstallCommand < Up::Command
   end
 
   private def ignore_cache_files
-    command = "echo 'up.cache' >> .gitignore"
-    Up::Utils.shell(command)
+    if File.exists?(".gitignore") && !already_ignoring_up_cache?
+      command = "echo 'up.cache' >> .gitignore"
+      Up::Utils.shell(command)
+    end
+  end
+
+  private def already_ignoring_up_cache? : Bool
+    !File.read(".gitignore").includes?("up.cache")
   end
 
   private def print_success_message
