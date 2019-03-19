@@ -1,4 +1,5 @@
 require "teeplate"
+require "colorize"
 require "./up/command"
 require "./up/*"
 require "./up/commands/*"
