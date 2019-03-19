@@ -5,7 +5,7 @@ class Up::InstallCommand < Up::Command
 
   def call
     if already_installed?
-      puts "It looks like Up is already installed."
+      puts "#{"Did nothing.".colorize.bold.yellow} It looks like Up is already installed."
     else
       install
     end
@@ -28,7 +28,7 @@ class Up::InstallCommand < Up::Command
 
   private def print_success_message
     puts <<-TEXT
-    Installed Up! View/change settings in 'up.yml'
+    Installed in #{"./up.yml".colorize.bold.green}
     TEXT
   end
 end
