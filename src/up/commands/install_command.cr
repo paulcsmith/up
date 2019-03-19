@@ -27,13 +27,13 @@ class Up::InstallCommand < Up::Command
 
   private def ignore_cache_files
     if File.exists?(".gitignore") && !already_ignoring_up_cache?
-      command = "echo 'up.cache' >> .gitignore"
+      command = "echo '\n# Ignore Up cache file\nup.cache' >> .gitignore"
       Up::Utils.shell(command)
     end
   end
 
   private def already_ignoring_up_cache? : Bool
-    !File.read(".gitignore").includes?("up.cache")
+    File.read(".gitignore").includes?("up.cache")
   end
 
   private def print_success_message
