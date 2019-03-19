@@ -1,6 +1,7 @@
 class Up::Runner
   COMMANDS = [
     Up::HelpCommand,
+    Up::InstallCommand,
   ]
   VERSION = "0.1.0"
 

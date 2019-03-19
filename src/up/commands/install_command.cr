@@ -1,6 +1,6 @@
-class Up::NewCommand < Up::Command
+class Up::InstallCommand < Up::Command
   def name
-    "new"
+    "install"
   end
 
   def call
@@ -8,9 +8,6 @@ class Up::NewCommand < Up::Command
       puts "It looks like Up is already installed."
     else
       install
-      puts <<-TEXT
-      Installed Up! View/change settings in 'up.yml'
-      TEXT
     end
   end
 
@@ -20,11 +17,18 @@ class Up::NewCommand < Up::Command
 
   private def install
     UpInstallationTemplate.new.render("./")
-    ignore_up_cache_files
+    ignore_cache_files
+    print_success_message
   end
 
-  private def ignore_up_cache_files
+  private def ignore_cache_files
     command = "echo 'up.cache' >> .gitignore"
     Up::Utils.shell(command)
+  end
+
+  private def print_success_message
+    puts <<-TEXT
+    Installed Up! View/change settings in 'up.yml'
+    TEXT
   end
 end

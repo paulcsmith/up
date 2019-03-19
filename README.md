@@ -7,7 +7,7 @@ Up makes it easier to start, build, and run Docker locally.
 ## Basic usage
 
 1. Set up your project with Docker and Docker compose.
-1. Run `up new` to create an `up.yml` file.
+1. Run `up install` to create an `up.yml` file.
 1. Run `up` and Up will intelligently build containers if needed and then
    start your containers.
 1 Run `up <any command>` to run commands in your main container. By default
@@ -20,7 +20,7 @@ Up makes it easier to start, build, and run Docker locally.
 * `up` - starts your containers with `docker-compose up`. This will also build
   the container if not already built, and will rebuild automatically if required
   files change.
-* `up new` - create an `up.yml` file. This is where you can configure which
+* `up install` - create an `up.yml` file. This is where you can configure which
   files should trigger rebuilds, what the main app container is, etc.
 * `up stop` - stop any running containers.
 * `up ssh` - start a bash shell in a container.
