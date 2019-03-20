@@ -2,6 +2,8 @@ class Up::Runner
   COMMANDS = [
     Up::HelpCommand,
     Up::InstallCommand,
+    Up::SshCommand,
+    Up::StopCommand,
   ]
   VERSION = "0.1.0"
 
