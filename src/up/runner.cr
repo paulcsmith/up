@@ -29,15 +29,12 @@ class Up::Runner
   end
 
   private def docker_compose_up
-    # TODO
+    Up::Utils.shell("docker-compose up")
   end
 
   private def run_command_in_main_container
-    # Combine command name and args since we want to pass the args as-is
-    # to the container
-
-    # TODO
-    # RunCommandInMainContainer.call(command_name + args)
+    full_command = (command_name + args).join(" ")
+    Up::Utils.shell("docker-compose run --rm app #{full_command}")
   end
 
   private def up_command
