@@ -29,10 +29,12 @@ class Up::Runner
   end
 
   private def docker_compose_up
+    # TODO: Build if changed
     Up::Utils.shell("docker-compose up")
   end
 
   private def run_command_in_main_container
+    # TODO: Build if changed
     full_command = args.push(command_name.not_nil!).join(" ")
     Up::Utils.shell("docker-compose run --rm app #{full_command}")
   end
