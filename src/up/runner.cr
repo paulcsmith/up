@@ -33,7 +33,7 @@ class Up::Runner
   end
 
   private def run_command_in_main_container
-    full_command = (command_name + args).join(" ")
+    full_command = args.push(command_name.not_nil!).join(" ")
     Up::Utils.shell("docker-compose run --rm app #{full_command}")
   end
 
