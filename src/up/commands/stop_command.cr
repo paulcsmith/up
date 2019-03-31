@@ -3,7 +3,7 @@ class Up::StopCommand < Up::Command
     "stop"
   end
 
-  def call
+  def call(_args)
     Up::Utils.shell("docker-compose down")
   end
 end

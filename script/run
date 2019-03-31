@@ -4,4 +4,4 @@
 set -e
 set -o pipefail
 
-crystal src/up.cr -- "$@"
+crystal src/run.cr -- "$@"

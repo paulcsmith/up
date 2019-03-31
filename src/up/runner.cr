@@ -1,11 +1,15 @@
 class Up::Runner
   COMMANDS = [
-    Up::HelpCommand,
-    Up::InstallCommand,
-    Up::SshCommand,
-    Up::StopCommand,
+    Up::HelpCommand.new,
+    Up::InstallCommand.new,
+    Up::SshCommand.new,
+    Up::StopCommand.new,
+    Up::StartContainers.new,
   ]
   VERSION = "0.1.0"
+
+  Habitat.create do
+  end
 
   @command_name : String?
   @args : Array(String)
@@ -22,7 +26,7 @@ class Up::Runner
 
   def call
     if command_name.nil?
-      docker_compose_up
+      Up.settings.start_container_command.call([] of String)
     elsif (command = up_command)
       command.call(args)
     else
@@ -30,20 +34,15 @@ class Up::Runner
     end
   end
 
-  private def docker_compose_up
-    # TODO: Build if changed
-    Up::Utils.shell("docker-compose up")
-  end
-
   private def run_command_in_main_container
-    # TODO: Build if changed
-    full_command = args.push(command_name.not_nil!).join(" ")
-    Up::Utils.shell("docker-compose run --rm app #{full_command}")
+    main_container = "app"
+    full_command = args.push(main_container).push(command_name.not_nil!)
+    Up.settings.run_in_container_command.call(full_command)
   end
 
-  private def up_command
+  private def up_command : Up::Command?
     command_name.try do |name|
-      COMMANDS.find { |command| command.empty.matches?(name) }
+      COMMANDS.find { |command| command.matches?(name) }
     end
   end
 

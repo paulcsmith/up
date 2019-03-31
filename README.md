@@ -35,14 +35,13 @@ Up makes it easier to start, build, and run Docker locally.
 # `up <any command>` will default to running in this container
 main_container: app
 # Running `up` will automatically rebuild the image if these conditions are met
-rebuild_when:
-  files_changed:
-    - shard.yml
-    - shard.lock
-    - Dockerfile
-    - docker/*
-    - docker-compose.yml
-    - package.json
+rebuild_when_changed:
+  - shard.yml
+  - shard.lock
+  - Dockerfile
+  - docker/*
+  - docker-compose.yml
+  - package.json
 # You can add additional compose commands here
 docker_compose_command: docker-compose
 # Add shortcuts for `up` commands`
