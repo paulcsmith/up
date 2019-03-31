@@ -9,6 +9,7 @@ crystal: 0.27.2
 dependencies:
   teeplate:
     github: mosop/teeplate
-
+  habitat:
+    github: luckyframework/habitat
 
 license: MIT

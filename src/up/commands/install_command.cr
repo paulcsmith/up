@@ -3,7 +3,7 @@ class Up::InstallCommand < Up::Command
     "install"
   end
 
-  def call
+  def call(_args)
     if already_installed?
       print_already_installed_message
     else
@@ -12,7 +12,7 @@ class Up::InstallCommand < Up::Command
   end
 
   private def already_installed?
-    File.exists?("./up.yml")
+    File.exists?(Up::Settings::FILENAME)
   end
 
   private def print_already_installed_message
@@ -38,7 +38,7 @@ class Up::InstallCommand < Up::Command
 
   private def print_success_message
     puts <<-TEXT
-    Installed in #{"./up.yml".colorize.bold.green}
+    Installed Up in #{Up::Settings::FILENAME.colorize.bold.green}
     TEXT
   end
 end

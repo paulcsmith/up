@@ -7,4 +7,8 @@ module Up::Utils
       error: STDERR
     )
   end
+
+  def self.print(message)
+    Up.settings.output_io.puts(message)
+  end
 end

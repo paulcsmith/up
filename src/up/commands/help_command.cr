@@ -3,7 +3,7 @@ class Up::HelpCommand < Up::Command
     %w(-h --help help)
   end
 
-  def call
-    puts "Help!!"
+  def call(_args)
+    Up::Utils.print "Help!!"
   end
 end
