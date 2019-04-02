@@ -9,5 +9,6 @@
 /shard.lock
 
 # Ignore Up cache file
-up.cache
-up.yml
+/up.cache
+/up.yml
+/spec/fixtures/up.fresh.cache

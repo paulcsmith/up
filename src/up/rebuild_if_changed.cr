@@ -13,6 +13,6 @@ class Up::RebuildIfChanged
   end
 
   private def rebuild
-    Up::Utils.shell("docker-compose build")
+    Up::Utils.docker_compose("build")
   end
 end

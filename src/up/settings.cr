@@ -1,29 +1,34 @@
 class Up::Settings
-  FILENAME = "up.yml"
-  private getter yaml
+  YAML.mapping(
+    main_container: {
+      type:    String,
+      default: "app",
+    },
+    docker_compose_command: {
+      type:    String,
+      default: "docker-compose",
+    },
+    tracked_file_locations: {
+      type:    Array(String),
+      key:     "rebuild_when_changed",
+      default: [] of String,
+    }
+  )
 
-  def initialize
+  def self.parse : Up::Settings
     ensure_settings_exist!
-    settings_yaml = File.read(FILENAME)
-    @yaml = YAML.parse(settings_yaml)
+    settings_yaml = File.read(location)
+    from_yaml(settings_yaml)
   end
 
-  private def ensure_settings_exist! : Nil
-    if !File.readable?(FILENAME)
-      puts "Settings file #{FILENAME} does not exist. Install up with 'up install'"
-      exit 1
+  private def self.ensure_settings_exist! : Nil
+    if !File.readable?(location)
+      Up::Utils.exit_with_message \
+        "Settings file #{location} does not exist. Install up with 'up install'"
     end
   end
 
-  def main_container : String
-    yaml["main_container"]?.try(&.as_s) || "app"
-  end
-
-  def docker_compose_command : String
-    yaml["docker_compose_command"]?.try(&.as_s) || "docker-compose"
-  end
-
-  def file_paths_to_track : Array(String)
-    yaml["rebuild_when_changed"]?.try(&.as_a.map(&.as_s)) || [] of String
+  private def self.location
+    Up.settings.settings_location
   end
 end
