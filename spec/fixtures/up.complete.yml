@@ -1,0 +1,5 @@
+main_container: custom-main-container
+rebuild_when_changed:
+  - spec/fixtures/file1.txt
+  - spec/fixtures/file2.txt
+docker_compose_command: docker-compose-custom

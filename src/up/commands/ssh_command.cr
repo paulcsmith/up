@@ -5,6 +5,6 @@ class Up::SshCommand < Up::Command
 
   def call(_args)
     Up::RebuildIfChanged.call
-    Up::Utils.shell("docker-compose run --rm app bash")
+    Up::Utils.docker_compose("run --rm app bash")
   end
 end

@@ -5,6 +5,6 @@ class Up::StartContainers < Up::Command
 
   def call(_args)
     Up::RebuildIfChanged.call
-    Up::Utils.shell("docker-compose up")
+    Up::Utils.docker_compose("up")
   end
 end

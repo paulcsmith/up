@@ -12,6 +12,8 @@ module Up
     setting output_io : IO = STDOUT
     setting start_container_command : Up::Command = Up::StartContainers.new
     setting run_in_container_command : Up::Command = Up::RunInContainer.new
+    setting cache_location : String = "up.cache"
+    setting settings_location : String = "up.yml"
   end
 
   def self.run(args : Array(String))

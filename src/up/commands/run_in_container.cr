@@ -5,6 +5,6 @@ class Up::RunInContainer < Up::Command
 
   def call(args)
     Up::RebuildIfChanged.call
-    Up::Utils.shell("docker-compose run --rm #{args.join(" ")}")
+    Up::Utils.docker_compose("run --rm #{args.join(" ")}")
   end
 end

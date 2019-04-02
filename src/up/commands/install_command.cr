@@ -12,7 +12,7 @@ class Up::InstallCommand < Up::Command
   end
 
   private def already_installed?
-    File.exists?(Up::Settings::FILENAME)
+    File.exists?(Up.settings.settings_location)
   end
 
   private def print_already_installed_message
@@ -38,7 +38,7 @@ class Up::InstallCommand < Up::Command
 
   private def print_success_message
     puts <<-TEXT
-    Installed Up in #{Up::Settings::FILENAME.colorize.bold.green}
+    Installed Up in #{Up.settings.settings_location.colorize.bold.green}
     TEXT
   end
 end
