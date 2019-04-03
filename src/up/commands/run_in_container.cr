@@ -1,6 +1,6 @@
 class Up::RunInContainer < Up::Command
   def name
-    "start"
+    "run"
   end
 
   def call(args)
