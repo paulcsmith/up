@@ -4,6 +4,6 @@ class Up::HelpCommand < Up::Command
   end
 
   def call(_args)
-    Up::Utils.print "Help!!"
+    Up::Utils.print "See the README at https://github.com/paulcsmith/up/blob/master/README.md"
   end
 end

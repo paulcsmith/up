@@ -3,8 +3,8 @@ class Up::StartContainers < Up::Command
     "start"
   end
 
-  def call(_args)
+  def call(args)
     Up::RebuildIfChanged.call
-    Up::Utils.docker_compose("up")
+    Up::Utils.docker_compose("up #{args.join(" ")}")
   end
 end
