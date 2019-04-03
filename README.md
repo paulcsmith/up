@@ -23,11 +23,14 @@ Up makes it easier to start, build, and run Docker locally.
 * `up install` - create an `up.yml` file. This is where you can configure which
   files should trigger rebuilds, what the main app container is, etc.
 * `up stop` - stop any running containers.
-* `up ssh` - start a bash shell in a container.
-* `up nuke` - deletes volumes, images, and containers and start from scratch.
-* `up <any command>` - any command non-Up command will be run in the main app
+* `up ssh` - start a bash shell in the main container.
+* `up <any command>` - any non-Up command will be run in the main app
   container. The main container defaults to one called `app`, but can be
   configured in `up.yml`
+
+## Roadmap
+
+* `up nuke` - deletes volumes, images, and containers and start from scratch.
 
 ## Configuring Up
 
@@ -44,12 +47,6 @@ rebuild_when_changed:
   - package.json
 # You can add additional compose commands here
 docker_compose_command: docker-compose
-# Add shortcuts for `up` commands`
-shortcuts:
-  # If you run `up spec` it will run `crystal spec` in the `app` container
-  spec:
-    container: app
-    command: crystal spec
 ```
 
 ## Installation
