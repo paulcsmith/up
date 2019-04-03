@@ -4,6 +4,12 @@ Docker offers an incredible promise, but falls short for local development.
 
 Up makes it easier to start, build, and run Docker locally.
 
+* **Much shortens commands.** `up node test` instead of
+  `docker-compose up run --rm web node test`
+* **Automatic image rebuilds.** No more pulling from git and wondering why your
+  project isn't working. Up will track necessary files and rebuild for you.
+* **Simple setup & installation**.
+
 ## Basic usage
 
 1. Set up your project with Docker and Docker compose.
@@ -27,10 +33,6 @@ Up makes it easier to start, build, and run Docker locally.
 * `up <any command>` - any non-Up command will be run in the main app
   container. The main container defaults to one called `app`, but can be
   configured in `up.yml`
-
-## Roadmap
-
-* `up nuke` - deletes volumes, images, and containers and start from scratch.
 
 ## Configuring Up
 
