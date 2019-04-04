@@ -1,6 +1,10 @@
 class Up::StartContainersInBackground < Up::Command
-  def name
-    "-d"
+  def names
+    ["-d"]
+  end
+
+  def summary
+    "Start containers in the background"
   end
 
   def call(args)

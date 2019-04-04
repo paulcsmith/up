@@ -4,7 +4,7 @@ describe Up do
   it "runs the command if one matches the first argument" do
     Up.run(["help", "ignored"])
 
-    Up.settings.output_io.to_s.should contain("See the README")
+    Up.settings.output_io.to_s.should contain("Show this help message")
   end
 
   it "starts the containers if no args given" do

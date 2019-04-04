@@ -1,6 +1,10 @@
 class Up::ComposeCommand < Up::Command
-  def name
-    "compose"
+  def names
+    ["compose"]
+  end
+
+  def summary
+    "Run a command with 'docker_compose_command' from up.yml"
   end
 
   def call(args)
