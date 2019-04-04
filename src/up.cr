@@ -11,7 +11,7 @@ module Up
   Habitat.create do
     # Using Habitat so we can swap things out in specs
     setting output_io : IO = STDOUT
-    setting start_container_command : Up::Command = Up::StartContainers.new
+    setting start_container_command : Up::Command = Up::StartContainersCommand.new
     setting run_in_container_command : Up::Command = Up::RunInContainer.new
     setting cache_location : String = "up.cache"
     setting settings_location : String = "up.yml"
