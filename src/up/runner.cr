@@ -8,16 +8,12 @@ class Up::Runner
     Up::VersionCommand.new,
   ]
 
-  Habitat.create do
-  end
-
-  @command_name : String?
   @args : Array(String)
 
   private getter args
+  delegate main_container, to: Up::Settings.parse
 
   def initialize(@args : Array(String))
-    @command_name = @args.shift?
   end
 
   def self.call(*args, **named_args)
@@ -28,16 +24,19 @@ class Up::Runner
     if command_name.nil?
       Up.settings.start_container_command.call([] of String)
     elsif (command = up_command)
-      command.call(args)
+      command.call(args_without_command_name)
     else
       run_command_in_main_container
     end
   end
 
+  private def args_without_command_name : Array(String)
+    args.skip(1)
+  end
+
   private def run_command_in_main_container
-    main_container = "app"
-    full_command = args.push(main_container).push(command_name.not_nil!)
-    Up.settings.run_in_container_command.call(full_command)
+    Up.settings.run_in_container_command.call \
+      [Up::Settings.parse.main_container] + args
   end
 
   private def up_command : Up::Command?
@@ -47,10 +46,10 @@ class Up::Runner
   end
 
   def command_name : String?
-    if @command_name.try(&.empty?)
+    if @args.first?.try(&.empty?)
       nil
     else
-      @command_name
+      @args.first?
     end
   end
 end
