@@ -42,8 +42,8 @@ brew install docker-up
   files should trigger rebuilds, what the main app container is, etc.
 * `up stop` - stop any running containers.
 * `up ssh` - start a bash shell in the main container.
-* `up compose <command>` - runs the docker compose command. A short cut for using `docker-compose`. Also takes into account 
-  the `docker_compose_command` defined in `up.yml`, which is handy if your default compose configuration is a little more 
+* `up compose <command>` - runs the docker compose command. A short cut for using `docker-compose`. Also takes into account
+  the `docker_compose_command` defined in `up.yml`, which is handy if your default compose configuration is a little more
   custom.
 * `up <any command>` - any non-Up command will be run in the main app
   container. The main container defaults to one called `app`, but can be
@@ -51,24 +51,69 @@ brew install docker-up
 
 ## Configuring Up
 
-```yml
-# `up <any command>` will default to running in this container
-main_container: app
-# Running `up` will automatically rebuild the image if these conditions are met
+Up can be configured using the `up.yml` file in your project. A default `up.yml`
+is generated for you when you run `up install`.
+
+#### `main_container`
+
+`up <any command>` will default to running in this container. Defaults to `app`
+
+For example, `up node test` will run `node index.js` in the `app` container
+since it doesn't match any other up commands like `up stop` or `up install`
+
+#### `docker_compose_command`
+
+You can customize the docker compose command here. Defaults to `docker-compose`.
+
+Here's an example of how would tell up to use a different docker-compose file:
+
+    docker_compose_command: docker-compose -f docker-compose.dev.
+
+> Note: for most projects the default is fine.
+
+#### `rebuild_when_changed`
+
+Up automatically rebuilds images when you run a command and any of these
+files have changed.
+
+More details below.
+
+## Automatic rebuilding
+
+Up uses the files and paths in `rebuild_when_changed` in your `up.yml` to
+determine when it should rebuuld the containers.
+
+By default it adds the common docker files and directories, but you will likely
+want to watch other files your images depend on.
+
+Below are some hints to get started.
+
+### Crystal & Lucky
+
+```yaml
 rebuild_when_changed:
-  - shard.yml
-  - shard.lock
-  - Dockerfile
-  - docker/*
-  - docker-compose.yml
+  - shard.*
+  - db/*
+  - webpack.mix.js
   - package.json
-# You can add additional compose commands here
-docker_compose_command: docker-compose
 ```
 
-## Development
+### Node
 
-TODO: Write development instructions here
+```yaml
+rebuild_when_changed:
+  - yarn.lock
+  - package.json
+  - npm-shrinkwrap.json
+```
+
+### Rails
+
+```yaml
+rebuild_when_changed:
+  - Gemfile
+  - Gemfile.lock
+```
 
 ## Contributing
 
