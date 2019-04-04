@@ -1,8 +1,12 @@
 class SpyCommand < Up::Command
   property called_args : Array(String)?
 
-  def name
-    "unused"
+  def names
+    ["unused"]
+  end
+
+  def summary
+    "Super sneaky spy command"
   end
 
   def call(@called_args)

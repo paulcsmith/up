@@ -1,6 +1,10 @@
 class Up::RunInContainer < Up::Command
-  def name
-    "run"
+  def names
+    ["run"]
+  end
+
+  def summary
+    "Run a command using docker compose"
   end
 
   def call(args)

@@ -1,6 +1,10 @@
 class Up::SshCommand < Up::Command
-  def name
-    "ssh"
+  def names
+    ["ssh"]
+  end
+
+  def summary
+    "Start the main container and and run bash"
   end
 
   def call(_args)

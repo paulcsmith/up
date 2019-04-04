@@ -1,6 +1,10 @@
 class Up::VersionCommand < Up::Command
-  def name
-    ["-v", "--version", "version"]
+  def names
+    %w(-v --version version)
+  end
+
+  def summary
+    "Display the version of Up"
   end
 
   def call(_args)

@@ -1,6 +1,10 @@
 class Up::InstallCommand < Up::Command
-  def name
-    "install"
+  def names
+    ["install"]
+  end
+
+  def summary
+    "Install Up"
   end
 
   def call(_args)

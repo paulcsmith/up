@@ -1,6 +1,10 @@
 class Up::StopCommand < Up::Command
-  def name
-    "stop"
+  def names
+    ["stop"]
+  end
+
+  def summary
+    "Bring down all containers"
   end
 
   def call(_args)
