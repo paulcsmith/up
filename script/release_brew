@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -eu
+
+shards install
+crystal generate_release.cr
+
+echo "Remember to tag it (git tag vX.X.X) and push tags (git push --tags)"

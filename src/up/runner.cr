@@ -6,7 +6,6 @@ class Up::Runner
     Up::StopCommand.new,
     Up::StartContainers.new,
   ]
-  VERSION = "0.1.0"
 
   Habitat.create do
   end

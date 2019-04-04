@@ -1,0 +1,19 @@
+class Up < Formula
+  desc "Tool for working with Docker locally"
+  homepage "http://github.com/paulcsmith/up"
+  url "<%= url %>"
+  sha256 "<%= binary_sha %>"
+  version "<%= version %>"
+  depends_on "crystal-lang"
+
+  def install
+    system "mkdir lib"
+    system "ls"
+    system "crystal build lib/lucky_cli/src/lucky.cr"
+    bin.install "up"
+  end
+
+  test do
+    system "{bin}/up", "--help"
+  end
+end

@@ -10,14 +10,24 @@ Up makes it easier to start, build, and run Docker locally.
   project isn't working. Up will track necessary files and rebuild for you.
 * **Simple setup & installation**.
 
+## Installation on macOS
+
+```
+brew tap paulcsmith/up
+brew install up
+```
+
+> Instructions for Linux coming soon.
+
 ## Basic usage
 
-1. Set up your project with Docker and Docker compose.
+> This assumes you already have Dockerfile and docker-compose set up.
+
 1. Run `up install` to create an `up.yml` file.
 1. Run `up` and Up will intelligently build containers if needed and then
-   start your containers.
-1 Run `up <any command>` to run commands in your main container. By default
-  this is your app container, but can be configured in `up.yml`
+   start your containers. Similar to `docker-compose up --build`.
+1 Run `up <any command>` to run commands in your main container (configurable
+in `up.yml`). By default this is your `app` container.
 
 > For example `up rails db:migrate`, `up phx.server`, or `up node index.js`
 
@@ -51,29 +61,65 @@ rebuild_when_changed:
 docker_compose_command: docker-compose
 ```
 
-## Installation
+## Set up which files to track
 
-1. Add the dependency to your `shard.yml`:
+These are examples of files Up should track for rebuilding.
 
-   ```yaml
-   dependencies:
-     up:
-       github: your-github-user/up
-   ```
+### Crystal/Lucky
 
-2. Run `shards install`
-
-## Usage
-
-```crystal
-require "up"
+```yaml
+# up.yml
+rebuild_when_changed:
+  # Add these:
+  - shard.*
+  - db/*
+  - script/setup
+  # For Lucky projects
+  - package.json
+  - webpack.mix.js
 ```
 
-TODO: Write usage instructions here
+### Ruby/Rails
 
-## Development
+```yaml
+# up.yml
+rebuild_when_changed:
+  # Add these:
+  - Gemfile
+  - Gemfile.lock
+  - db/*
+  - bin/setup
+```
 
-TODO: Write development instructions here
+### Elixir
+
+```yaml
+# up.yml
+rebuild_when_changed:
+  # Add these:
+  - mix.*
+  - priv/*
+```
+
+### Node
+
+```yaml
+# up.yml
+rebuild_when_changed:
+  # Add these:
+  - package.json
+  - package-lock.json
+  - npm-shrinkwrap.json
+  - yarn.lock
+```
+
+## Installation
+
+
+## Releasing a new version
+
+1. Run `script/build`
+1. Run `script/release`
 
 ## Contributing
 
@@ -85,4 +131,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [Paul Smith](https://github.com/your-github-user) - creator and maintainer
+- [Paul Smith](https://github.com/paulcsmith) - creator and maintainer

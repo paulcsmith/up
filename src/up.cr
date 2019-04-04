@@ -7,6 +7,8 @@ require "./up/*"
 require "./up/commands/*"
 
 module Up
+  VERSION = "0.1.0"
+
   Habitat.create do
     # Using Habitat so we can swap things out in specs
     setting output_io : IO = STDOUT

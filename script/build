@@ -4,5 +4,4 @@
 set -e
 set -o pipefail
 
-script/build
-docker run -it --rm luckyframework/up "$@"
+docker build -t luckyframework/up .

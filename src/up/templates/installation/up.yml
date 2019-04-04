@@ -21,3 +21,5 @@ rebuild_when_changed:
   - Dockerfile
   - docker/*
   - docker-compose.*
+  - shard.*
+  - db/*
