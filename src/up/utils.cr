@@ -29,6 +29,8 @@ module Up::Utils
   end
 
   def self.docker_compose(command : String) : Nil
-    shell("#{Up::Settings.parse.docker_compose_command} #{command}")
+    compose_command = "#{Up::Settings.parse.docker_compose_command} #{command}"
+    Up.settings.output_io.puts compose_command.colorize.dim
+    shell(compose_command)
   end
 end
