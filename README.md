@@ -10,6 +10,17 @@ Up makes it easier to start, build, and run Docker locally.
   project isn't working. Up will track necessary files and rebuild for you.
 * **Simple setup & installation**.
 
+## Installation
+
+On macOS:
+
+```bash
+brew tap paulcsmith/up
+brew install docker-up
+```
+
+> Linux instructions coming soon.
+
 ## Basic usage
 
 1. Set up your project with Docker and Docker compose.
