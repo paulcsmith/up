@@ -27,7 +27,7 @@ class Up::HelpCommand < Up::Command
         print_command(names, command.summary, to: list)
       end
       print_command "<anything else>",
-        "Run #{"<anything else>".colorize.underline} in the #{main_container.colorize.underline} container",
+        "Run #{"<anything else>".colorize.underline} in the main container",
         to: list
     end
   end
