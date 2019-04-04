@@ -25,6 +25,6 @@ describe Up do
       Up.run(args)
     end
 
-    fake_run_command.called_with?(["run", "me", "please"]).should be_true
+    fake_run_command.should have_been_called_with?(["run", "me", "please"])
   end
 end
