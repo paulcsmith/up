@@ -4,8 +4,9 @@ class Up::Runner
     Up::InstallCommand.new,
     Up::SshCommand.new,
     Up::StopCommand.new,
-    Up::StartContainers.new,
+    Up::StartContainersCommand.new,
     Up::VersionCommand.new,
+    Up::StartContainersInBackground.new,
   ]
 
   @args : Array(String)

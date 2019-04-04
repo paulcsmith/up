@@ -1,4 +1,4 @@
-class Up::StartContainers < Up::Command
+class Up::StartContainersCommand < Up::Command
   def name
     "start"
   end
