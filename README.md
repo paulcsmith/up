@@ -41,7 +41,6 @@ brew install docker-up
 * `up install` - create an `up.yml` file. This is where you can configure which
   files should trigger rebuilds, what the main app container is, etc.
 * `up stop` - stop any running containers.
-* `up ssh` - start a bash shell in the main container.
 * `up compose <command>` - runs the docker compose command. A short cut for using `docker-compose`. Also takes into account
   the `docker_compose_command` defined in `up.yml`, which is handy if your default compose configuration is a little more
   custom.
