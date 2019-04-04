@@ -1,7 +1,7 @@
 # `up <any command>` will default to running in this container
 #
-# For example, `up node index.js` will run `node index.js` in the `app` container
-# since it doesn't match any other up commands like `up stop` or `up install`
+# For example, `up node test` will run `node test` in the `app` container
+# since it doesn't match any other Up commands like `stop` or `install`.
 main_container: app
 
 # You can customize the docker compose command here.
