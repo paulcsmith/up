@@ -4,7 +4,7 @@ Docker offers an incredible promise, but falls short for local development.
 
 Up makes it easier to start, build, and run Docker locally.
 
-* **Much shortens commands.** `up node test` instead of
+* **Much shorter commands.** `up node test` instead of
   `docker-compose up run --rm web node test`
 * **Automatic image rebuilds.** No more pulling from git and wondering why your
   project isn't working. Up will track necessary files and rebuild for you.
