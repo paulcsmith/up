@@ -5,6 +5,7 @@ class Up::Runner
     Up::SshCommand.new,
     Up::StopCommand.new,
     Up::StartContainers.new,
+    Up::VersionCommand.new,
   ]
 
   Habitat.create do
