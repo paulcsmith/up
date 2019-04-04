@@ -5,8 +5,9 @@ class Up::Runner
     Up::SshCommand.new,
     Up::StopCommand.new,
     Up::StartContainersCommand.new,
-    Up::VersionCommand.new,
     Up::StartContainersInBackground.new,
+    Up::ComposeCommand.new,
+    Up::VersionCommand.new,
   ]
 
   @args : Array(String)
