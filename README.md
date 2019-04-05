@@ -25,7 +25,7 @@ brew install docker-up
 ```bash
 git clone https://github.com/paulcsmith/up.git
 cd up
-git checkout v0.1.5
+git checkout v0.1.6
 shards install
 crystal build src/run.cr -o up
 cp up /usr/local/bin
