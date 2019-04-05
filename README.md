@@ -57,6 +57,7 @@ Now you're ready to get running with Up! Take a look at the commands below
   the command in the main app container (which is configured in `up.yml`). For example,
   `up bin/rake` would run `docker-compose run --rm app bin/rake`.
 * `up -d` - same as above but starts containers in the background.
+* `up run <args>` - run `<args>` using Docker compose. Similar to `docker-compose run --rm <args>`.
 * `up stop` - stop any running containers.
 * `up install` - create an `up.yml` file. The `up.yml` file is where you can
   configure which files should trigger rebuilds, what the main app container
