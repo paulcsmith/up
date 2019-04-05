@@ -32,36 +32,38 @@ cp up /usr/local/bin
 echo "\nAll done! Run 'up install' in a project using Docker to get started."
 ```
 
-Run `up -v` and if you see a version number you're good to go!
-
-> Feel free to remove the cloned repo afterward: `cd .. && rm -rf up`
+Once it is installed, you can remove the leftovers: `cd .. && rm -rf up`
 
 ## Basic usage
 
-1. Set up your project with Docker and Docker compose.
-1. Run `up install` to create an `up.yml` file for your project.
-1. Now you can run `up` and Up will intelligently build containers if needed and then
-   start your containers.
-1. Run `up <any command>` to run commands in your main container. By default
-   this is your `app` container defined in `docker-compose.yml`, but it can be changed in `up.yml`
+Before doing anything else, set up your project with Docker and Docker compose.
 
-> For example `up bundle exec rspec`, `up mix test`, or `up node test`
+Once you've got your `Dockerfile` and `docker-compose.yml` set up:
 
-## Command Details
+1. Run `up install` to create an `up.yml` settings file in your project directory.
+1. Check the [`up.yml` settings](#configuring-up). You'll probably want to
+   add files that [Up can track to rebuild images automatically](#automatic-rebuilding)
+   if they change.
 
-* `up` - starts your containers with `docker-compose up`. This will also build
-  the container if not already built, and will rebuild automatically if required
-  files change.
-* `up -d` - same as above but starts in the background.
-* `up install` - create an `up.yml` file. This is where you can configure which
-  files should trigger rebuilds, what the main app container is, etc.
+Now you're ready to get running with Up! Take a look at the commands below
+(or using `up help`).
+
+## Commands
+
+* `up` - starts your containers (e.g. `docker-compose up`). This will also build
+  the container if not already built, and will
+  [rebuild automatically](#automatic-rebuilding) if tracked files change.
+* `up <any non-Up command>` - if there is no matching Up command, Up will run
+  the command in the main app container (which is configured in `up.yml`). For example,
+  `up bin/rake` would run `docker-compose run --rm app bin/rake`.
+* `up -d` - same as above but starts containers in the background.
 * `up stop` - stop any running containers.
-* `up compose <command>` - runs the docker compose command. A short cut for using `docker-compose`. Also takes into account
-  the `docker_compose_command` defined in `up.yml`, which is handy if your default compose configuration is a little more
-  custom.
-* `up <any command>` - any non-Up command will be run in the main app
-  container. The main container defaults to one called `app`, but can be
-  configured in `up.yml`
+* `up install` - create an `up.yml` file. The `up.yml` file is where you can
+  configure which files should trigger rebuilds, what the main app container
+  is, etc.
+* `up compose <command>` - runs the docker compose command. Takes into account
+  the `docker_compose_command` defined in `up.yml`, which is handy if your
+  default compose configuration is a little more custom.
 
 ## Configuring Up
 
@@ -72,8 +74,7 @@ is generated for you when you run `up install`.
 
 `up <any command>` will default to running in this container. Defaults to `app`
 
-For example, `up node test` will run `node index.js` in the `app` container
-since it doesn't match any other up commands like `up stop` or `up install`
+For example, `up node test` will run `node index.js` in the `app` container.
 
 #### `docker_compose_command`
 
@@ -97,7 +98,7 @@ More details below.
 Up uses the files and paths in `rebuild_when_changed` in your `up.yml` to
 determine when it should rebuuld the containers.
 
-By default it adds the common docker files and directories, but you will likely
+By default Up tracks the common docker files and directories, but you will likely
 want to watch other files your images depend on.
 
 Below are some hints to get started.
@@ -128,6 +129,7 @@ rebuild_when_changed:
 ```yaml
 rebuild_when_changed:
   # Add these entries to up.yml
+  - db/*
   - Gemfile
   - Gemfile.lock
 ```
