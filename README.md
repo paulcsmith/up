@@ -1,8 +1,6 @@
 # Up
 
-Docker offers an incredible promise, but falls short for local development.
-
-Up makes it easier to start, build, and run Docker locally.
+Up makes it easier to start, build, and run Docker for local development.
 
 * **Much shorter commands.** `up node test` instead of
   `docker-compose up run --rm web node test`
