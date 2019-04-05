@@ -83,7 +83,7 @@ You can customize the docker compose command here. Defaults to `docker-compose`.
 
 Here's an example of how would tell up to use a different docker-compose file:
 
-    docker_compose_command: docker-compose -f docker-compose.dev.
+    docker_compose_command: docker-compose -f docker-compose.dev.yml
 
 > Note: for most projects the default is fine.
 
