@@ -10,14 +10,14 @@ Up makes it easier to start, build, and run Docker for local development.
 
 ## Installation
 
-### On macOS:
+#### On macOS:
 
 ```bash
 brew tap paulcsmith/up
 brew install docker-up
 ```
 
-### On Linux:
+#### On Linux:
 
 1. Install [Crystal](https://crystal-lang.org/reference/installation/)
 1. Clone and build Up:
