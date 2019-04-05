@@ -2,7 +2,7 @@
 
 Up makes it easier to start, build, and run Docker for local development.
 
-* **Much shorter commands.** `up node test` instead of
+* **Much shorter commands.** For example, `up node test` instead of
   `docker-compose up run --rm web node test`
 * **Automatic image rebuilds.** No more pulling from git and wondering why your
   project isn't working. Up will track necessary files and rebuild for you.
@@ -10,17 +10,17 @@ Up makes it easier to start, build, and run Docker for local development.
 
 ## Installation
 
-On macOS:
+### On macOS:
 
 ```bash
 brew tap paulcsmith/up
 brew install docker-up
 ```
 
-On Linux:
+### On Linux:
 
 1. Install [Crystal](https://crystal-lang.org/reference/installation/)
-1. Run:
+1. Clone and build Up:
 
 ```bash
 git clone https://github.com/paulcsmith/up.git
@@ -33,7 +33,7 @@ cp up /usr/local/bin
 
 Run `up -v` and if you see a version number you're good to go!
 
-> Feel free to remove the cloned repo after: `cd .. && rm -rf up`
+> Feel free to remove the cloned repo afterward: `cd .. && rm -rf up`
 
 ## Basic usage
 
@@ -105,6 +105,7 @@ Below are some hints to get started.
 
 ```yaml
 rebuild_when_changed:
+  # Add these in your up.yml
   - shard.*
   - db/*
   - webpack.mix.js
@@ -115,6 +116,7 @@ rebuild_when_changed:
 
 ```yaml
 rebuild_when_changed:
+  # Add these in your up.yml
   - yarn.lock
   - package.json
   - npm-shrinkwrap.json
@@ -124,6 +126,7 @@ rebuild_when_changed:
 
 ```yaml
 rebuild_when_changed:
+  # Add these entries to up.yml
   - Gemfile
   - Gemfile.lock
 ```
