@@ -29,6 +29,7 @@ git checkout v0.1.6
 shards install
 crystal build src/run.cr -o up
 cp up /usr/local/bin
+echo "\nAll done! Run 'up install' in a project using Docker to get started."
 ```
 
 Run `up -v` and if you see a version number you're good to go!
