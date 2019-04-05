@@ -19,7 +19,23 @@ brew tap paulcsmith/up
 brew install docker-up
 ```
 
-> Linux instructions coming soon.
+On Linux:
+
+1. Install [Crystal](https://crystal-lang.org/reference/installation/)
+1. Run:
+
+```bash
+git clone https://github.com/paulcsmith/up.git
+cd up
+git checkout v0.1.5
+shards install
+crystal build src/run.cr -o up
+cp up /usr/local/bin
+```
+
+Run `up -v` and if you see a version number you're good to go!
+
+> Feel free to remove the cloned repo after: `cd .. && rm -rf up`
 
 ## Basic usage
 
