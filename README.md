@@ -46,7 +46,7 @@ Once you've got your `Dockerfile` and `docker-compose.yml` set up:
    if they change.
 
 Now you're ready to get running with Up! Take a look at the commands below
-(or using `up help`).
+(or use `up help`).
 
 ## Commands
 
@@ -60,7 +60,7 @@ Now you're ready to get running with Up! Take a look at the commands below
 * `up run <args>` - run `<args>` using Docker compose. Similar to `docker-compose run --rm <args>`.
 * `up stop` - stop any running containers.
 * `up install` - create an `up.yml` file. The `up.yml` file is where you can
-  configure which files should trigger rebuilds, what the main app container
+  configure which files should trigger automatic rebuilds, what the main app container
   is, etc.
 * `up compose <command>` - runs the docker compose command. Takes into account
   the `docker_compose_command` defined in `up.yml`, which is handy if your
@@ -97,7 +97,7 @@ More details below.
 ## Automatic rebuilding
 
 Up uses the files and paths in `rebuild_when_changed` in your `up.yml` to
-determine when it should rebuuld the containers.
+determine when it should rebuild the containers.
 
 By default Up tracks the common docker files and directories, but you will likely
 want to watch other files your images depend on.
