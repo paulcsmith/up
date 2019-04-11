@@ -53,18 +53,18 @@ Now you're ready to get running with Up! Take a look at the commands below
 * `up` - starts your containers (e.g. `docker-compose up`). This will also build
   the container if not already built, and will
   [rebuild automatically](#automatic-rebuilding) if tracked files change.
+* `up -d` - same as above but starts containers in the background.
 * `up <any non-Up command>` - if there is no matching Up command, Up will run
   the command in the main app container (which is configured in `up.yml`). For example,
   `up bin/rake` would run `docker-compose run --rm app bin/rake`.
-* `up -d` - same as above but starts containers in the background.
 * `up run <args>` - run `<args>` using Docker compose. Similar to `docker-compose run --rm <args>`.
-* `up stop` - stop any running containers.
+* `up stop` - stop any running containers. Similar to `docker-compose down`.
 * `up install` - create an `up.yml` file. The `up.yml` file is where you can
   configure which files should trigger automatic rebuilds, what the main app container
   is, etc.
 * `up compose <command>` - runs the docker compose command. Takes into account
   the `docker_compose_command` defined in `up.yml`, which is handy if your
-  default compose configuration is a little more custom.
+  default compose configuration is a little more custom. Example `up compose logs`
 
 ## Configuring Up
 
