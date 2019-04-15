@@ -1,6 +1,6 @@
 class Up::StopCommand < Up::Command
   def names
-    ["stop"]
+    ["stop", "down"]
   end
 
   def summary
