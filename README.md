@@ -4,9 +4,10 @@ Up makes it easier to start, build, and run Docker for local development.
 
 * **Much shorter commands.** For example, `up node test` instead of
   `docker-compose up run --rm web node test`
-* **Automatic image rebuilds.** Up will rebuild containers when you run
-  a command and files your images depend on are changed. No more pulling 
-  from git and wondering why your project isn't working. 
+* **Automatic image rebuilds.** When files your image depends on are changed 
+  (`package.json`, `Dockerfile`, etc.), Up will  rebuild the images before
+  running commands. No more pulling from git and wondering why your project 
+  isn't working (oops, forgot to run `docker-compose build`). 
 * **Simple setup & installation**.
 
 > *Note that Up will not stop and rebuild already running contains. You must
