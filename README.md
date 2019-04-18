@@ -10,7 +10,7 @@ Up makes it easier to start, build, and run Docker for local development.
   isn't working (oops, forgot to run `docker-compose build`). 
 * **Simple setup & installation**.
 
-> *Note that Up will not stop and rebuild already running contains. You must
+> Note that Up will not automatically rebuild containers that are running. You must
 > stop them first. Then when you run any Up command it will rebuild the image.
 
 ## Installation
