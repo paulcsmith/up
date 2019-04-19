@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Builds and installs Up as `up-beta`
+
+# Exit if any subcommand fails
+set -e
+set -o pipefail
+
+crystal build src/run.cr -o /usr/local/bin/up-beta
+chmod +x /usr/local/bin/up-beta
+
+echo "Installed! Try 'up-beta -v'"
