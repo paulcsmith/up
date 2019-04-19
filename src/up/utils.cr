@@ -11,6 +11,7 @@ module Up::Utils
       command,
       shell: true,
       output: Up.settings.output_io,
+      input: STDIN,
       error: STDERR
     )
   end
