@@ -4,7 +4,7 @@ class Up::SshCommand < Up::Command
   end
 
   def summary
-    "Start the main container and and run bash"
+    "Start the main container and run bash"
   end
 
   def call(_args)

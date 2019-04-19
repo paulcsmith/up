@@ -4,10 +4,10 @@ Up makes it easier to start, build, and run Docker for local development.
 
 * **Much shorter commands.** For example, `up node test` instead of
   `docker-compose up run --rm web node test`
-* **Automatic image rebuilds.** When files your image depends on are changed 
+* **Automatic image rebuilds.** When files your image depends on are changed
   (`package.json`, `Dockerfile`, etc.), Up will  rebuild the images before
-  running commands. No more pulling from git and wondering why your project 
-  isn't working (oops, forgot to run `docker-compose build`). 
+  running commands. No more pulling from git and wondering why your project
+  isn't working (oops, forgot to run `docker-compose build`).
 * **Simple setup & installation**.
 
 > Note that Up will not automatically rebuild containers that are running. You must
@@ -64,6 +64,7 @@ Now you're ready to get running with Up! Take a look at the commands below
   `up bin/rake` would run `docker-compose run --rm app bin/rake`.
 * `up run <args>` - run `<args>` using Docker compose. Similar to `docker-compose run --rm <args>`.
 * `up stop` - stop any running containers. Similar to `docker-compose down`.
+* `up ssh` - Run bash on the main container.
 * `up install` - create an `up.yml` file. The `up.yml` file is where you can
   configure which files should trigger automatic rebuilds, what the main app container
   is, etc.
