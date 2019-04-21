@@ -18,6 +18,7 @@ docker_compose_command: docker-compose
 # Add files/directories your images rely on.
 rebuild_when_changed:
   - up.yml
+  - .dockerignore
   - Dockerfile
   - docker/*
   - docker-compose.*
